@@ -9,6 +9,6 @@ public class helloworld {
 
     @GetMapping("/")
     public String hellowword(){
-        return "Je ne suis pas général ! ...A MON COMMANDEMENT !!";
+        return " oui oui c'est ça ma grosse bite";
     }
 }

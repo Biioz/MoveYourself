@@ -3,6 +3,7 @@ package com.jee.MoveYourself.entities;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Activity {
@@ -76,5 +77,17 @@ public class Activity {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Activity activity = (Activity) o;
+        return Objects.equals(id, activity.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -3,13 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/css/HomeStyles.css">
 </head>
 <body>
+<!-- Header -->
+<header>
+    <h1>Move Yourself</h1>
+    <nav>
+        <a href="/account">My Account</a>
+        <a href="/my-activities">My Activities</a>
+    </nav>
+</header>
+
+<!-- Main Content -->
 <div class="container">
-    <h2>Welcome to the Home Page!</h2>
-    <p>Hello, <span th:text="${username}"></span>!</p>
-    <a href="/logout">Logout</a>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form th:action="@{/home}" method="get">
+            <label>
+                <input type="text" name="query" placeholder="Search activities..." th:value="${query}">
+            </label>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Suggested Activities -->
+    <div class="suggested-activities">
+        <h2>Suggested Activities</h2>
+        <div class="activity-grid">
+            <div class="activity-card" th:each="activity : ${suggestedActivities}">
+                <h3 th:text="${activity.name}">Activity Name</h3>
+                <p th:text="${activity.description}">Activity Description</p>
+                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Activities -->
+    <div class="all-activities">
+        <h2>All Activities</h2>
+        <div class="activity-grid">
+            <div class="activity-card" th:each="activity : ${allActivities}">
+                <h3 th:text="${activity.name}">Activity Name</h3>
+                <p th:text="${activity.description}">Activity Description</p>
+                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Error Message -->
+    <div th:if="${param.error == 'already_signed_up'}" class="error-message">
+        You are already signed up for this activity.
+    </div>
 </div>
 </body>
 </html>

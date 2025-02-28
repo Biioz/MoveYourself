@@ -1,0 +1,183 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333; /* Dark gray text */
+}
+
+/* Header Styles */
+header {
+    background-color: #343a40; /* Dark gray header */
+    color: #fff;
+    padding: 15px 30px; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px; /* Larger font size */
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    gap: 20px; /* Increased gap between links */
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px; /* Increased padding */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header nav a:hover {
+    background-color: #495057; /* Slightly lighter gray on hover */
+    color: #fff;
+}
+
+/* Main Content Styles */
+.container {
+    padding: 30px; /* Increased padding */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 30px; /* Increased margin */
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #cc00ff; /* Purple border on focus */
+    box-shadow: 0 0 8px rgba(204, 0, 255, 0.2); /* Subtle glow */
+}
+
+/* Activity Grid */
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Increased gap between cards */
+}
+
+.activity-card {
+    background-color: #fff;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.activity-card h3 {
+    margin-top: 0;
+    color: #cc00ff; /* Purple heading */
+    font-size: 22px; /* Larger font size */
+}
+
+.activity-card p {
+    margin: 10px 0;
+    color: #555; /* Dark gray text */
+    line-height: 1.6; /* Improved readability */
+}
+
+.activity-card button {
+    background-color: #cc00ff; /* Purple button */
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Increased padding */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.activity-card button:hover {
+    background-color: #9900cc; /* Darker purple on hover */
+}
+
+/* Suggested Activities Section */
+.suggested-activities {
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.suggested-activities h2 {
+    color: #cc00ff; /* Purple heading */
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 26px; /* Larger font size */
+}
+
+/* All Activities Section */
+.all-activities {
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.all-activities h2 {
+    color: #cc00ff; /* Purple heading */
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 26px; /* Larger font size */
+}
+
+/* My Account Page */
+.account-info {
+    background-color: #fff;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 25px; /* Increased padding */
+    margin-bottom: 30px; /* Increased margin */
+}
+
+.account-info h2 {
+    color: #cc00ff; /* Purple heading */
+    margin-top: 0;
+    font-size: 26px; /* Larger font size */
+}
+
+.account-info p {
+    margin: 10px 0;
+    color: #555; /* Dark gray text */
+    line-height: 1.6; /* Improved readability */
+}
+
+/* My Activities Page */
+.my-activities {
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.my-activities h2 {
+    color: #cc00ff; /* Purple heading */
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 26px; /* Larger font size */
+}
+
+.error-message {
+    background-color: #ffebee; /* Light red background */
+    color: #c62828; /* Dark red text */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}

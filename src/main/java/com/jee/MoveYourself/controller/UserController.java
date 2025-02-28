@@ -16,7 +16,7 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserService userService ;
 
     // Register a new user
     @PostMapping("/register")

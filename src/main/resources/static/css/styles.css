@@ -1,4 +1,4 @@
-/* src/main/resources/static/css/styles.css */
+/*src/main/resources/static/css/styles.css*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -12,7 +12,7 @@ body {
 .container {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
@@ -21,27 +21,28 @@ body {
 input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px -10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 button {
-    width: 100%;
+    width: 60%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #cc00ff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
+    width: 55%;
+    color: black
 }
 
 a {
-    color: #007bff;
+    color: #cc00ff;
     text-decoration: none;
 }
 

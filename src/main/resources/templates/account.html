@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Account</title>
+  <link rel="stylesheet" href="/css/accountStyles.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <h1>Move Yourself</h1>
+  <nav>
+    <a href="/home">Home</a>
+    <a href="/my-activities">My Activities</a>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="account-info">
+    <h2>My Account</h2>
+    <form th:action="@{/update-account}" method="post">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" th:value="${username}" readonly>
+      </div>
+      <div>
+        <label for="pathology">Pathology:</label>
+        <input type="text" id="pathology" name="pathology" th:value="${pathology}" required>
+      </div>
+      <button type="submit">Update Account</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

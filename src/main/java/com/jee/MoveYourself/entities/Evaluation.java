@@ -9,7 +9,7 @@ public class Evaluation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int satisfactionScore; // Score de satisfaction (1 à 5)
+    private int satisfactionScore;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -18,16 +18,6 @@ public class Evaluation {
     @ManyToOne
     @JoinColumn(name = "activity_id")
     private Activity activity;
-
-    // Constructors, getters, and setters
-    public Evaluation() {
-    }
-
-    public Evaluation(int satisfactionScore, User user, Activity activity) {
-        this.satisfactionScore = satisfactionScore;
-        this.user = user;
-        this.activity = activity;
-    }
 
     // Getters and setters
     public Long getId() {

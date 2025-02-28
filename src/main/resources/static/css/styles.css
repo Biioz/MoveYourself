@@ -1,4 +1,4 @@
-/*src/main/resources/static/css/styles.css*/
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,14 +18,24 @@ body {
     text-align: center;
 }
 
-input {
+/* Input and Select Styles */
+input, select {
     width: 100%;
     padding: 10px;
-    margin: 10px -10px;
+    margin: 10px -10px ;
     border: 1px solid #ccc;
     border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+input:focus, select:focus {
+    border-color: #cc00ff;
+    box-shadow: 0 0 8px rgba(204, 0, 255, 0.2);
+}
+
+/* Button Styles */
 button {
     width: 60%;
     padding: 10px;
@@ -34,18 +44,27 @@ button {
     border: none;
     border-radius: 15px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    width: 55%;
-    color: black
+    background-color: #9900cc;
+    transform: translateY(-2px);
 }
 
+button:active {
+    transform: translateY(0);
+}
+
+/* Link Styles */
 a {
     color: #cc00ff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
+    color: #9900cc;
     text-decoration: underline;
 }

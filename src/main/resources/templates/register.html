@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/HomeStyles.css">
+    <link rel="stylesheet" href="/css/Styles.css">
 </head>
 <body>
 <div class="container">
@@ -19,11 +19,21 @@
         </div>
         <div>
             <label for="pathology">Pathology:</label>
-            <input type="text" id="pathology" name="pathology" required>
+            <select id="pathology" name="pathology" required>
+                <option value="" disabled selected hidden>Select a pathology</option>
+                <option th:each="pathology : ${pathologies}"
+                        th:value="${pathology.name}"
+                        th:text="${pathology.name}"></option>
+            </select>
         </div>
         <div>
             <label for="gender">Gender:</label>
-            <input type="text" id="gender" name="gender" required>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected hidden>Select a gender</option>
+                <option value="">Female</option>
+                <option value="">Male</option>
+                <option value="">Other</option>
+            </select>
         </div>
         <div>
             <label for="password">Password:</label>

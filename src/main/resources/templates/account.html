@@ -25,10 +25,27 @@
         <input type="text" id="username" name="username" th:value="${username}" readonly>
       </div>
       <div>
+        <label for="age">age:</label>
+        <input type="text" id="age" name="age" th:value="${age}" readonly>
+      </div>
+      <div>
+        <label for="gender">gender:</label>
+        <input type="text" id="gender" name="gender" th:value="${gender}" readonly>
+      </div>
+      <div>
         <label for="pathology">Pathology:</label>
-        <input type="text" id="pathology" name="pathology" th:value="${pathology}" required>
+        <select id="pathology" name="pathology" required>
+          <option value="" disabled selected hidden>Need to change pathology ?</option>
+          <option th:each="pathology : ${pathologies}"
+                  th:value="${pathology.name}"
+                  th:text="${pathology.name}"></option>
+        </select>
       </div>
       <button type="submit">Update Account</button>
+    </form>
+    <br>
+    <form th:action="@{/logout-account}" method="post">
+      <button type="submit">Logout</button>
     </form>
   </div>
 </div>

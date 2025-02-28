@@ -181,3 +181,18 @@ header nav a:hover {
     margin-bottom: 20px;
     text-align: center;
 }
+
+.searchButton{
+    background-color: #cc00ff; /* Purple button */
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Increased padding */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.searchButton:hover {
+    background-color: #9900cc; /* Darker purple on hover */
+}

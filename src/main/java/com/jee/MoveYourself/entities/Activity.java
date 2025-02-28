@@ -20,6 +20,10 @@ public class Activity {
     @ManyToMany(mappedBy = "activities")
     private List<User> users = new ArrayList<>();
 
+    @Transient // This field is not persisted in the database
+    private Double averageEvaluation;
+
+
     // Constructors, getters, and setters
     public Activity() {}
 
@@ -89,5 +93,14 @@ public class Activity {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+    public Double getAverageEvaluation() {
+        return averageEvaluation;
+    }
+
+    public void setAverageEvaluation(Double averageEvaluation) {
+        this.averageEvaluation = averageEvaluation;
     }
 }

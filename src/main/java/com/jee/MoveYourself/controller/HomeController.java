@@ -46,6 +46,17 @@ public class HomeController {
             allActivities = activityRepository.findAll();
         }
 
+        // Calculate average evaluation for each activity
+        for (Activity activity : allActivities) {
+            Double averageEvaluation = activityRepository.findAverageEvaluationByActivityId(activity.getId());
+            activity.setAverageEvaluation(averageEvaluation != null ? averageEvaluation : 0.0);
+        }
+
+        for (Activity activity : suggestedActivities) {
+            Double averageEvaluation = activityRepository.findAverageEvaluationByActivityId(activity.getId());
+            activity.setAverageEvaluation(averageEvaluation != null ? averageEvaluation : 0.0);
+        }
+
         model.addAttribute("username", user.getUsername());
         model.addAttribute("suggestedActivities", suggestedActivities);
         model.addAttribute("allActivities", allActivities);

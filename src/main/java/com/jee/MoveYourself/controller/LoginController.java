@@ -1,9 +1,12 @@
 package com.jee.MoveYourself.controller;
 
+
 import com.jee.MoveYourself.entities.User;
+import com.jee.MoveYourself.repositories.PathologyRepository;
 import com.jee.MoveYourself.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,11 +22,15 @@ public class LoginController {
         return "login"; // Serve the login.html page
     }
 
-
+    private final PathologyRepository pathologyRepository;
+    public LoginController(PathologyRepository pathologyRepository) {
+        this.pathologyRepository = pathologyRepository;
+    }
     @GetMapping("/register")
-    public String register() {
-
-        return "register"; // Serve the register.html page (if you have one)
+    public String showRegisterForm(Model model) {
+        // Fetch all pathologies from the database
+        model.addAttribute("pathologies", pathologyRepository.findAll());
+        return "register";
     }
 
     @PostMapping("/register")

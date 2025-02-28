@@ -23,7 +23,7 @@
             <label>
                 <input type="text" name="query" placeholder="Search activities..." th:value="${query}">
             </label>
-            <button type="submit">Search</button>
+            <button type="submit" class="searchButton">Search</button>
         </form>
     </div>
 
@@ -34,6 +34,13 @@
             <div class="activity-card" th:each="activity : ${suggestedActivities}">
                 <h3 th:text="${activity.name}">Activity Name</h3>
                 <p th:text="${activity.description}">Activity Description</p>
+                <p>
+                    <strong>Average Evaluation:</strong>
+                    <span th:if="${activity.averageEvaluation != 0.0}">
+                        <span th:text="${#numbers.formatDecimal(activity.averageEvaluation, 1, 2)}"></span>%
+                    </span>
+                    <span th:unless="${activity.averageEvaluation != 0.0}">No evaluations yet</span>
+                </p>
                 <form th:action="@{'/signup/' + ${activity.id}}" method="post">
                     <button type="submit">Sign Up</button>
                 </form>
@@ -48,7 +55,13 @@
             <div class="activity-card" th:each="activity : ${allActivities}">
                 <h3 th:text="${activity.name}">Activity Name</h3>
                 <p th:text="${activity.description}">Activity Description</p>
-                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
+                <p>
+                    <strong>Average Evaluation:</strong>
+                    <span th:if="${activity.averageEvaluation != 0.0}">
+                        <span th:text="${#numbers.formatDecimal(activity.averageEvaluation, 1, 2)}"></span>%
+                    </span>
+                    <span th:unless="${activity.averageEvaluation != 0.0}">No evaluations yet</span>
+                </p>                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
                     <button type="submit">Sign Up</button>
                 </form>
             </div>

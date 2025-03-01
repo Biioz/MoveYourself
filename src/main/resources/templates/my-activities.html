@@ -23,6 +23,12 @@
             <div class="activity-card" th:each="activity : ${userActivities}">
                 <h3 th:text="${activity.name}">Activity Name</h3>
                 <p th:text="${activity.description}">Activity Description</p>
+                <form th:action="@{'/rate/' + ${activity.id}}" method="post">
+                    <label>
+                        <input type="number" name="evaluation" min="0" max="100" step="1" placeholder="Rate this activity !" th:value="${query}">
+                    </label>
+                    <button type="submit">Rate</button>
+                </form>
             </div>
         </div>
     </div>

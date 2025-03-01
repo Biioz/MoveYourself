@@ -3,9 +3,11 @@ package com.jee.MoveYourself.controller;
 
 
 import com.jee.MoveYourself.entities.Activity;
+import com.jee.MoveYourself.entities.Evaluation;
 import com.jee.MoveYourself.entities.Program;
 import com.jee.MoveYourself.entities.User;
 import com.jee.MoveYourself.repositories.ActivityRepository;
+import com.jee.MoveYourself.repositories.EvaluationRepository;
 import com.jee.MoveYourself.repositories.ProgramRepository;
 import com.jee.MoveYourself.repositories.UserRepository;
 import com.jee.MoveYourself.services.ActivityService;
@@ -36,6 +38,8 @@ public class ActivityController {
     private UserRepository userRepository;
     @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    private EvaluationRepository evaluationRepository;
 
     // Add a new activity
     @PostMapping
@@ -66,6 +70,23 @@ public class ActivityController {
         programService.createProgram(program);
 
         return "redirect:/my-activities"; // Redirect to the programs page
+    }
+
+    @PostMapping("/rate/{activityId}")
+    public String rateActivity(@PathVariable Long activityId, @RequestParam Integer evaluation) {
+        // Get authenticated user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Add the evaluation to the activity
+        Evaluation eval = new Evaluation();
+        eval.setId(activityId);
+        eval.setUser(user);
+        eval.setSatisfactionScore(evaluation);
+        evaluationRepository.save(eval);
+
+        return "redirect:/my-activities";
     }
 
     // Get an activity by ID

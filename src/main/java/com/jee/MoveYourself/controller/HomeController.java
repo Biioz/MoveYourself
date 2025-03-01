@@ -1,6 +1,7 @@
 package com.jee.MoveYourself.controller;
 
 import com.jee.MoveYourself.entities.Activity;
+import com.jee.MoveYourself.entities.Program;
 import com.jee.MoveYourself.entities.User;
 import com.jee.MoveYourself.repositories.ActivityRepository;
 import com.jee.MoveYourself.repositories.UserRepository;
@@ -84,6 +85,7 @@ public class HomeController {
 
         return "my-activities";
     }
+
 
     @PostMapping("/signup/{activityId}")
     public String signUpForActivity(@PathVariable Long activityId) {

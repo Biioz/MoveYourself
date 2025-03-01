@@ -26,6 +26,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Create Program Button -->
+    <div class="create-program">
+        <form th:action="@{/create-program}" method="post">
+            <button type="submit">Create Program</button>
+        </form>
+    </div>
+
+    <!-- Display User's Programs -->
+    <div class="user-programs">
+        <h2>My Programs</h2>
+        <div th:each="program : ${programs}">
+            <div class="program-card">
+                <h3 th:text="${program.name}">Program Name</h3>
+                <ul>
+                    <li th:each="activity : ${program.activities}" th:text="${activity.name}">Activity Name</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

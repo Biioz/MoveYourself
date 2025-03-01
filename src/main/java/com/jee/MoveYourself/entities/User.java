@@ -25,6 +25,17 @@ public class User {
     )
     private List<Activity> activities = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Program> programs;
+
+    public List<Program> getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(List<Program> programs) {
+        this.programs = programs;
+    }
+
     // Constructors, getters, and setters
     public User() {}
 

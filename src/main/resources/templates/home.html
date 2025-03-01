@@ -61,12 +61,14 @@
                         <span th:text="${#numbers.formatDecimal(activity.averageEvaluation, 1, 2)}"></span>%
                     </span>
                     <span th:unless="${activity.averageEvaluation != 0.0}">No evaluations yet</span>
-                </p>                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
+                </p>
+                <form th:action="@{'/signup/' + ${activity.id}}" method="post">
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
         </div>
     </div>
+
     <!-- Error Message -->
     <div th:if="${param.error == 'already_signed_up'}" class="error-message">
         You are already signed up for this activity.

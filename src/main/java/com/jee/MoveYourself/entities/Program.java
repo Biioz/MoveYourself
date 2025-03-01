@@ -1,8 +1,9 @@
 package com.jee.MoveYourself.entities;
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
+
 import java.util.List;
+
 
 @Entity
 public class Program {
@@ -14,24 +15,16 @@ public class Program {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToMany
     @JoinTable(
-            name = "program_activity",
-            joinColumns = @JoinColumn(name = "program_id"),
-            inverseJoinColumns = @JoinColumn(name = "activity_id")
+            name = "program_activity", // Name of the join table
+            joinColumns = @JoinColumn(name = "program_id"), // Column for program ID
+            inverseJoinColumns = @JoinColumn(name = "activity_id") // Column for activity ID
     )
-    private List<Activity> activities = new ArrayList<>();
-
-    // Constructors, getters, and setters
-    public Program() {}
-
-    public Program(String name, User user) {
-        this.name = name;
-        this.user = user;
-    }
+    private List<Activity> activities;
 
     // Getters and setters
     public Long getId() {

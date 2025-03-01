@@ -2,6 +2,7 @@ package com.jee.MoveYourself.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class Program {
             joinColumns = @JoinColumn(name = "program_id"), // Column for program ID
             inverseJoinColumns = @JoinColumn(name = "activity_id") // Column for activity ID
     )
-    private List<Activity> activities;
+    private List<Activity> activities = new ArrayList<>();
 
     // Getters and setters
     public Long getId() {

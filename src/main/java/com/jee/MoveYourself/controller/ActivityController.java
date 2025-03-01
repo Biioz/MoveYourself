@@ -9,6 +9,8 @@ import com.jee.MoveYourself.repositories.ActivityRepository;
 import com.jee.MoveYourself.repositories.ProgramRepository;
 import com.jee.MoveYourself.repositories.UserRepository;
 import com.jee.MoveYourself.services.ActivityService;
+import com.jee.MoveYourself.services.ProgramService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.antlr.v4.runtime.misc.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +19,19 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/activities")
+//@RestController
+//@RequestMapping("/api/my-activities")
+@Controller
 public class ActivityController {
 
     @Autowired
     private ActivityService activityService;
     @Autowired
-    private ProgramRepository programRepository;
+    private ProgramService programService;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -40,9 +44,10 @@ public class ActivityController {
         return ResponseEntity.ok(newActivity);
     }
 
-    @PostMapping("/create-program")
+    @PostMapping("/createprogram")
     public String createProgram() {
         // Get the authenticated user
+        System.out.println("njiebfjinebfnji");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userRepository.findByUsername(username)
@@ -54,10 +59,11 @@ public class ActivityController {
         program.setUser(user);
 
         // Add the user's subscribed activities to the program
-        program.setActivities(user.getActivities());
+        List<Activity> programActivities = new ArrayList<>(user.getActivities());
+        program.setActivities(programActivities);
 
         // Save the program (this will also save the links in the program_activity table)
-        programRepository.save(program);
+        programService.createProgram(program);
 
         return "redirect:/my-activities"; // Redirect to the programs page
     }
@@ -90,7 +96,7 @@ public class ActivityController {
         return ResponseEntity.ok(activities);
     }
 
-    @GetMapping("/home")
+    /*@GetMapping("/home")
     public String home(Model model) {
         // Get the authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -114,7 +120,7 @@ public class ActivityController {
         model.addAttribute("programs", programs);
 
         return "home";
-    }
+    }*/
 
     /** à bouger plus tard dans @GetMapping my-activities dans le homeController pour que ça charge les programmes quand on charge la page*/
     @GetMapping("/my-programs")

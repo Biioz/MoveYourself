@@ -79,7 +79,7 @@ header nav a:hover {
     gap: 25px; /* Increased gap between cards */
 }
 
-.activity-card {
+.activity-card, .program-card {
     background-color: #fff;
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -87,24 +87,24 @@ header nav a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.activity-card:hover {
+.activity-card:hover, .program-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
-.activity-card h3 {
+.activity-card h3, .program-card h3 {
     margin-top: 0;
     color: #cc00ff; /* Purple heading */
     font-size: 22px; /* Larger font size */
 }
 
-.activity-card p {
+.activity-card p, .program-card p {
     margin: 10px 0;
     color: #555; /* Dark gray text */
     line-height: 1.6; /* Improved readability */
 }
 
-.activity-card button {
+.activity-card button, .program-card button {
     background-color: #cc00ff; /* Purple button */
     color: #fff;
     border: none;
@@ -115,7 +115,7 @@ header nav a:hover {
     transition: background-color 0.3s;
 }
 
-.activity-card button:hover {
+.activity-card button:hover, .program-card button:hover {
     background-color: #9900cc; /* Darker purple on hover */
 }
 
@@ -182,7 +182,7 @@ header nav a:hover {
     text-align: center;
 }
 
-.searchButton{
+.searchButton {
     background-color: #cc00ff; /* Purple button */
     color: #fff;
     border: none;
@@ -195,4 +195,43 @@ header nav a:hover {
 
 .searchButton:hover {
     background-color: #9900cc; /* Darker purple on hover */
+}
+
+/* Programs Section */
+.user-programs {
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.user-programs h2 {
+    color: #cc00ff; /* Purple heading */
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 26px; /* Larger font size */
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Increased gap between cards */
+}
+
+.program-card ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.program-card ul li {
+    margin: 10px 0;
+    color: #555; /* Dark gray text */
+    line-height: 1.6; /* Improved readability */
+}
+
+.NameInput{
+    width: 20%;
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }

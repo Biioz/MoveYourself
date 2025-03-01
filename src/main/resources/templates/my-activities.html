@@ -29,6 +29,9 @@
                     </label>
                     <button type="submit">Rate</button>
                 </form>
+                <form th:action="@{'/signout/' + ${activity.id}}" method="post">
+                    <button type="submit">Sign out</button>
+                </form>
             </div>
         </div>
     </div>
@@ -36,7 +39,10 @@
     <!-- Create Program Button -->
     <div class="create-program">
         <form th:action="@{/createprogram}" method="post">
-            <button type="submit">Create Program</button>
+            <label>
+                <input type="text" name="programName" class = "NameInput" placeholder="Your program's name" required>
+            </label>
+            <button type="submit" class="searchButton">Create Program</button>
         </form>
     </div>
 
@@ -46,9 +52,10 @@
         <div th:each="program : ${programs}">
             <div class="program-card">
                 <h3 th:text="${program.name}">Program Name</h3>
-                <ul>
-                    <li th:each="activity : ${program.activities}" th:text="${activity.name}">Activity Name</li>
-                </ul>
+                <strong th:each="activity : ${program.activities}" th:text="${activity.name}+'      '">Activity Name ></strong>
+                <form th:action="@{'/deleteProgram/' + ${program.id}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         </div>
     </div>

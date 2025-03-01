@@ -82,6 +82,11 @@ public class HomeController {
         // Pass data to the Thymeleaf template
         model.addAttribute("username", username);
         model.addAttribute("userActivities", userActivities);
+        // Fetch the user's programs
+        List<Program> programs = user.getPrograms();
+
+        // Pass the programs to the Thymeleaf template
+        model.addAttribute("programs", programs);
 
         return "my-activities";
     }

@@ -9,6 +9,7 @@ import com.jee.MoveYourself.entities.User;
 import com.jee.MoveYourself.repositories.ActivityRepository;
 import com.jee.MoveYourself.repositories.EvaluationRepository;
 import com.jee.MoveYourself.repositories.ProgramRepository;
+import com.jee.MoveYourself.repositories.UserActivityRepository;
 import com.jee.MoveYourself.repositories.UserRepository;
 import com.jee.MoveYourself.services.ActivityService;
 import com.jee.MoveYourself.services.ProgramService;
@@ -40,16 +41,18 @@ public class ActivityController {
     private ActivityRepository activityRepository;
     @Autowired
     private EvaluationRepository evaluationRepository;
-
+    @Autowired
+    private UserActivityRepository userActivityRepository;
+/*
     // Add a new activity
     @PostMapping
     public ResponseEntity<Activity> addActivity(@RequestBody Activity activity) {
         Activity newActivity = activityService.addActivity(activity);
         return ResponseEntity.ok(newActivity);
-    }
+    }*/
 
     @PostMapping("/createprogram")
-    public String createProgram() {
+    public String createProgram(@RequestParam String programName) {
         // Get the authenticated user
         System.out.println("njiebfjinebfnji");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -59,7 +62,7 @@ public class ActivityController {
 
         // Create a new program
         Program program = new Program();
-        program.setName("My Program"); // You can customize the name
+        program.setName(programName); // You can customize the name
         program.setUser(user);
 
         // Add the user's subscribed activities to the program
@@ -89,6 +92,30 @@ public class ActivityController {
         return "redirect:/my-activities";
     }
 
+    @PostMapping("/signout/{activityId}")
+    public String signoutAcvtivity(@PathVariable Long activityId){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        userActivityRepository.deleteByUserIdAndActivityId(user.getId(), activityId);
+        return "redirect:/my-activities";
+    }
+
+    @PostMapping("/deleteProgram/{ProgramId}")
+    public String deleteProgram(@PathVariable Long programId){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        programService.deleteProgram(programId);
+        return "redirect:/my-activities";
+    }
+/*
     // Get an activity by ID
     @GetMapping("/{id}")
     public ResponseEntity<Activity> getActivityById(@PathVariable Long id) {
@@ -117,50 +144,6 @@ public class ActivityController {
         return ResponseEntity.ok(activities);
     }
 
-    /*@GetMapping("/home")
-    public String home(Model model) {
-        // Get the authenticated user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        // Fetch suggested activities based on the user's pathology
-        List<Activity> suggestedActivities = activityRepository.findByRecommendedPathology(user.getPathology());
-
-        // Fetch all activities
-        List<Activity> allActivities = activityRepository.findAll();
-
-        // Fetch the user's programs
-        List<Program> programs = user.getPrograms();
-
-        // Pass data to the Thymeleaf template
-        model.addAttribute("username", username);
-        model.addAttribute("suggestedActivities", suggestedActivities);
-        model.addAttribute("allActivities", allActivities);
-        model.addAttribute("programs", programs);
-
-        return "home";
-    }*/
-
-    /** à bouger plus tard dans @GetMapping my-activities dans le homeController pour que ça charge les programmes quand on charge la page*/
-    @GetMapping("/my-programs")
-    public String myPrograms(Model model) {
-        // Get the authenticated user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        // Fetch the user's programs
-        List<Program> programs = user.getPrograms();
-
-        // Pass the programs to the Thymeleaf template
-        model.addAttribute("programs", programs);
-
-        return "my-programs";
-    }
-
     // Update an activity
     @PutMapping("/{id}")
     public ResponseEntity<Activity> updateActivity(@PathVariable Long id, @RequestBody Activity activity) {
@@ -181,5 +164,5 @@ public class ActivityController {
     public ResponseEntity<List<Activity>> getAllActivities() {
         List<Activity> activities = activityService.getAllActivities();
         return ResponseEntity.ok(activities);
-    }
+    }*/
 }

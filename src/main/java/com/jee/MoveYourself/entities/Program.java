@@ -27,6 +27,8 @@ public class Program {
     )
     private List<Activity> activities = new ArrayList<>();
 
+    private Long rate;
+
     // Getters and setters
     public Long getId() {
         return id;
@@ -58,5 +60,13 @@ public class Program {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    public Long getRate() {
+        return rate;
+    }
+
+    public void setRate(Long rate) {
+        this.rate = rate;
     }
 }

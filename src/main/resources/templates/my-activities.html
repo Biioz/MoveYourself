@@ -25,13 +25,18 @@
                 <p th:text="${activity.description}">Activity Description</p>
                 <form th:action="@{'/rate/' + ${activity.id}}" method="post">
                     <label>
-                        <input type="number" name="evaluation" min="0" max="100" step="1" placeholder="Rate this activity !" th:value="${query}">
+                        <input type="number" name="evaluation" class = "NameInputRate" min="0" max="100" step="1" placeholder="0 to 100%" th:value="${query}">
                     </label>
                     <button type="submit">Rate</button>
+
                 </form>
+                <br>
                 <form th:action="@{'/signout/' + ${activity.id}}" method="post">
                     <button type="submit">Sign out</button>
                 </form>
+
+
+
             </div>
         </div>
     </div>
@@ -53,7 +58,23 @@
             <div class="program-card">
                 <h3 th:text="${program.name}">Program Name</h3>
                 <strong th:each="activity : ${program.activities}" th:text="${activity.name}+'      '">Activity Name ></strong>
+                <p>
+                    <strong>Your current evaluation:</strong>
+                    <span th:if="${program.rate != 0.0}">
+                        <span th:text="${program.rate}"></span>%
+                    </span>
+                    <span th:unless="${program.rate != 0.0}">No evaluations yet</span>
+                </p>
+               <form th:action="@{'/rateAprogram/' + ${program.id}}" method="post">
+                    <label>
+                        <input type="number" name="evaluation2" class = "NameInput" min="0" max="100" step="1" placeholder="0 to 100%" th:value="${query}">
+                    </label>
+                    <button type="submit">Rate</button>
+
+                </form>
+                <br>
                 <form th:action="@{'/deleteProgram/' + ${program.id}}" method="post">
+
                     <button type="submit">Delete</button>
                 </form>
             </div>

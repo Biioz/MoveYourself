@@ -1,6 +1,5 @@
 package com.jee.MoveYourself.repositories;
 
-
 import com.jee.MoveYourself.entities.UserActivity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -1,38 +1,25 @@
 package com.jee.MoveYourself.controller;
 
-
-
 import com.jee.MoveYourself.entities.Activity;
 import com.jee.MoveYourself.entities.Evaluation;
 import com.jee.MoveYourself.entities.Program;
 import com.jee.MoveYourself.entities.User;
 import com.jee.MoveYourself.repositories.ActivityRepository;
 import com.jee.MoveYourself.repositories.EvaluationRepository;
-import com.jee.MoveYourself.repositories.ProgramRepository;
 import com.jee.MoveYourself.repositories.UserActivityRepository;
 import com.jee.MoveYourself.repositories.UserRepository;
-import com.jee.MoveYourself.services.ActivityService;
 import com.jee.MoveYourself.services.ProgramService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.antlr.v4.runtime.misc.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-//@RestController
-//@RequestMapping("/api/my-activities")
 @Controller
 public class ActivityController {
 
-    @Autowired
-    private ActivityService activityService;
     @Autowired
     private ProgramService programService;
     @Autowired

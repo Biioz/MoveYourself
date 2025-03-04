@@ -1,10 +1,8 @@
 package com.jee.MoveYourself.entities;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 public class Program {

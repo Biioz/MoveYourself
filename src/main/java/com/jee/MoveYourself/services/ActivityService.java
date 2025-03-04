@@ -1,4 +1,4 @@
-package com.jee.MoveYourself.services;
+/*package com.jee.MoveYourself.services;
 
 
 
@@ -54,4 +54,4 @@ public class ActivityService {
     public List<Activity> getAllActivities() {
         return activityRepository.findAll();
     }
-}
+}*/

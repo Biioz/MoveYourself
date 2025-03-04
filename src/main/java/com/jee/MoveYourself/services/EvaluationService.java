@@ -1,4 +1,4 @@
-package com.jee.MoveYourself.services;
+/*package com.jee.MoveYourself.services;
 
 import com.jee.MoveYourself.entities.Evaluation;
 import com.jee.MoveYourself.repositories.EvaluationRepository;
@@ -52,4 +52,4 @@ public class EvaluationService {
     public List<Evaluation> getAllEvaluations() {
         return evaluationRepository.findAll();
     }
-}
+}*/

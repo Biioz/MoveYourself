@@ -1,6 +1,5 @@
 package com.jee.MoveYourself.controller;
 
-
 import com.jee.MoveYourself.entities.User;
 import com.jee.MoveYourself.repositories.PathologyRepository;
 import com.jee.MoveYourself.services.UserService;

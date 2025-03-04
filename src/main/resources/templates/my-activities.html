@@ -60,10 +60,10 @@
                 <strong th:each="activity : ${program.activities}" th:text="${activity.name}+'      '">Activity Name ></strong>
                 <p>
                     <strong>Your current evaluation:</strong>
-                    <span th:if="${program.rate != 0.0}">
+                    <span th:if="${program.rate != null}">
                         <span th:text="${program.rate}"></span>%
                     </span>
-                    <span th:unless="${program.rate != 0.0}">No evaluations yet</span>
+                    <span th:unless="${program.rate != null}">No evaluations yet</span>
                 </p>
                <form th:action="@{'/rateAprogram/' + ${program.id}}" method="post">
                     <label>

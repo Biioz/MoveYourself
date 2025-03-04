@@ -47,11 +47,14 @@ public class ActivityController {
     @PostMapping("/createprogram")
     public String createProgram(@RequestParam String programName) {
         // Get the authenticated user
-        System.out.println("njiebfjinebfnji");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if(user.getActivities().isEmpty()){
+            return "redirect:/my-activities";
+        }
 
         // Create a new program
         Program program = new Program();

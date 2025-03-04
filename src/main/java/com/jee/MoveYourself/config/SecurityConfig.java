@@ -29,7 +29,8 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // Custom login page
-                        .defaultSuccessUrl("/home", true) // Redirect to home page after successful login
+                        .defaultSuccessUrl("/home", true)// Redirect to home page after successful login
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 )
                 .logout(logout -> logout
@@ -39,7 +40,10 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID") // Delete cookies
                         .permitAll()
                 )
-                .userDetailsService(userDetailsService); // Use custom UserDetailsService
+                .userDetailsService(userDetailsService) // Use custom UserDetailsService
+                .exceptionHandling(ex -> ex
+                        .accessDeniedPage("/403") // Custom access denied page
+                );
 
         return http.build();
     }
